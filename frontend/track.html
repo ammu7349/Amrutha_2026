@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadSafe AI – Track Emergency Response</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Brand Header -->
+  <header class="brand-header">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">🌱</span>
+        <div>
+          <div class="brand-title">RoadSafe AI</div>
+          <div class="brand-tagline">Eco-Intelligent Emergency Intake & Live Dispatch</div>
+        </div>
+      </a>
+      <div class="eco-badge-header">
+        🌿 <span>Zero-Carbon Local AI • No API Key Required</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html">🚨 Report Accident</a>
+    <a href="help.html">🏥 Nearby Help</a>
+    <a href="alert.html">📢 Emergency Alert</a>
+    <a href="track.html" class="active">🚑 Track Response</a>
+  </nav>
+
+  <main class="container">
+    <h1>🚑 Track Emergency Response</h1>
+    <p class="page-subtitle">Real-time simulation of emergency medical response, ambulance dispatch, and hospital green-corridor transit.</p>
+
+    <div class="demo-warning">
+      ⚠️ <strong>Demo only — no real ambulance is being tracked.</strong>
+    </div>
+
+    <div class="eco-banner">
+      🌱 <strong>Green Corridor Navigation:</strong> Route signals synchronized to expedite ambulance transit while minimizing fuel burn and idle emissions.
+    </div>
+
+    <!-- Incident Details Card -->
+    <div class="info-card">
+      <p><strong>Incident ID:</strong> <code id="incidentId" style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Loading…</code></p>
+      <p><strong>Accident Location:</strong> <span id="accidentLocation">Loading…</span></p>
+      <p><strong>Selected Emergency Service:</strong> <span id="emergencyService">Loading…</span></p>
+      <p><strong>Current Response Status:</strong> <span id="currentStatus" class="badge info">Loading…</span></p>
+    </div>
+
+    <!-- Prominent Active Ambulance Alert Banner -->
+    <div id="ambulanceBanner" class="ambulance-banner" style="display: none;">
+      <span style="font-size: 1.6rem;">🚑</span>
+      <div>
+        <div style="font-size: 1.1rem;"><strong>Ambulance is on the way</strong></div>
+        <div style="font-size: 0.88rem; font-weight: 500; opacity: 0.9;">
+          Emergency medical team dispatched via Green Corridor. ETA ~ 4 mins.
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Simulation Map -->
+    <div id="map"></div>
+
+    <!-- Response Timeline -->
+    <div class="timeline-container">
+      <h2>Response Timeline</h2>
+      <ul class="timeline" id="timelineList">
+        <!-- Rendered dynamically by track.js -->
+      </ul>
+    </div>
+
+    <!-- Demo Control Buttons -->
+    <div class="action-row" style="margin-top: 1.5rem;">
+      <button id="advanceBtn" class="primary-btn">
+        Advance Demo Status →
+      </button>
+      <button id="resetBtn" class="secondary-btn">
+        🔄 Reset Demo Status
+      </button>
+    </div>
+  </main>
+
+  <footer class="eco-footer">
+    RoadSafe AI • Eco-Intelligent Traffic Accident Lifeline • Hackathon Submission
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/track.js"></script>
+</body>
+</html>
