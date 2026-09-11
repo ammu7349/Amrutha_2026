@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadSafe AI – Emergency Alert Review</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Brand Header -->
+  <header class="brand-header">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">🌱</span>
+        <div>
+          <div class="brand-title">RoadSafe AI</div>
+          <div class="brand-tagline">Eco-Intelligent Emergency Intake & Live Dispatch</div>
+        </div>
+      </a>
+      <div class="eco-badge-header">
+        🌿 <span>Zero-Carbon Local AI • No API Key Required</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html">🚨 Report Accident</a>
+    <a href="help.html">🏥 Nearby Help</a>
+    <a href="alert.html" class="active">📢 Emergency Alert</a>
+    <a href="track.html">🚑 Track Response</a>
+  </nav>
+
+  <main class="container">
+    <h1>📢 Emergency Alert Review & Verification</h1>
+    <p class="page-subtitle">Standardized incident breakdown structured by the on-device AI engine. Verify details before triggering dispatch simulation.</p>
+
+    <div class="demo-warning">
+      ⚠️ <strong>Simulated Demo Only:</strong> This prototype generates standardized radio dispatch scripts. For real emergencies, always call 112 immediately.
+    </div>
+
+    <!-- Structured Report Container -->
+    <div id="reportSection" class="info-card">
+      <p style="color: var(--text-muted);">Loading structured incident report…</p>
+    </div>
+
+    <!-- Confirmation & Actions -->
+    <section style="margin: 1.5rem 0; background: #ffffff; border: 1.5px solid #cbd5e1;">
+      <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 1.05rem;">
+        <input type="checkbox" id="confirmCheckbox" style="width: 20px; height: 20px; accent-color: var(--primary-emerald);" />
+        <span>I confirm the above accident information is verified and accurate to the best of my knowledge</span>
+      </label>
+    </section>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+      <button id="sendAlertBtn" class="primary-btn" disabled>
+        📤 Submit Emergency Dispatch (Demo)
+      </button>
+
+      <a href="tel:112" class="emergency-btn">
+        📞 Call National Emergency (112)
+      </a>
+    </div>
+
+    <!-- Result / Dispatch Message Box -->
+    <div id="result"></div>
+  </main>
+
+  <footer class="eco-footer">
+    RoadSafe AI • Eco-Intelligent Traffic Accident Lifeline • Hackathon Submission
+  </footer>
+
+  <script src="js/alert.js"></script>
+</body>
+</html>
