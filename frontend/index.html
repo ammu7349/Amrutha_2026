@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadSafe AI – Report Accident</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Eco-Friendly Top Branding Bar -->
+  <header class="brand-header">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">🌱</span>
+        <div>
+          <div class="brand-title">RoadSafe AI</div>
+          <div class="brand-tagline">Eco-Intelligent Emergency Intake & Live Dispatch</div>
+        </div>
+      </a>
+      <div class="eco-badge-header">
+        🌿 <span>Zero-Carbon Local AI • No API Key Required</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="active">🚨 Report Accident</a>
+    <a href="help.html">🏥 Nearby Help</a>
+    <a href="alert.html">📢 Emergency Alert</a>
+    <a href="track.html">🚑 Track Response</a>
+  </nav>
+
+  <main class="container">
+    <h1>🚨 Rapid Accident Intake</h1>
+    <p class="page-subtitle">Instantly structure chaotic eyewitness details into verified emergency dispatch data without relying on external cloud APIs.</p>
+
+    <div class="eco-banner">
+      🌱 <strong>Eco-Friendly Local AI Active:</strong> Processing 100% on-device. Zero cloud compute emissions and maximum privacy.
+    </div>
+
+    <!-- Quick Demo Presets for 1-Click Testing -->
+    <div class="presets-card">
+      <div class="presets-card-title">⚡ Quick Demo Presets (1-Click Test):</div>
+      <div class="preset-buttons">
+        <button type="button" class="preset-btn" onclick="fillPreset('highway')">💥 Highway Two-Car Crash</button>
+        <button type="button" class="preset-btn" onclick="fillPreset('bike')">🛵 Two-Wheeler Collision</button>
+        <button type="button" class="preset-btn" onclick="fillPreset('pedestrian')">🚶 Pedestrian Crosswalk Hit</button>
+      </div>
+    </div>
+
+    <form id="reportForm" enctype="multipart/form-data" class="form-grid">
+      <section>
+        <label for="description">Accident Description *</label>
+        <textarea id="description" name="description" rows="3" placeholder="Describe what happened, vehicles involved, hazards..." required></textarea>
+        <div class="action-row">
+          <button type="button" id="voiceBtn" class="secondary-btn">🎙️ Voice Input (Optional)</button>
+          <span id="voiceStatus" style="font-size: 0.88rem; color: var(--primary-emerald);"></span>
+        </div>
+      </section>
+
+      <section>
+        <label for="manualLocation">Accident Location *</label>
+        <input type="text" id="manualLocation" name="manualLocation" placeholder="Enter landmark or street address" required />
+        <input type="hidden" id="latitude" name="latitude" value="12.9716" />
+        <input type="hidden" id="longitude" name="longitude" value="77.5946" />
+        <div class="action-row">
+          <button type="button" id="geoBtn" class="secondary-btn">📍 Auto-Detect GPS Location</button>
+          <span id="geoStatus" style="font-size: 0.88rem; color: var(--text-muted);">(Default GPS fallback active)</span>
+        </div>
+      </section>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+        <section>
+          <label for="injuredCount">Number of Injured Persons</label>
+          <input type="number" id="injuredCount" name="injuredCount" min="0" value="1" required />
+        </section>
+
+        <section>
+          <label for="vehicles">Vehicles Involved</label>
+          <input type="text" id="vehicles" name="vehicles" placeholder="e.g., Car and motorcycle, auto" />
+        </section>
+      </div>
+
+      <section>
+        <label for="injuryDetails">Visible Injuries & Symptoms</label>
+        <textarea id="injuryDetails" name="injuryDetails" rows="2" placeholder="e.g., bleeding, fracture, unconscious..."></textarea>
+      </section>
+
+      <section>
+        <label for="photo">Scene Photo (Optional)</label>
+        <input type="file" id="photo" name="photo" accept="image/*" />
+        <img id="photoPreview" src="" alt="Scene Preview" style="display:none; max-width:100%; border-radius: 8px; margin-top:0.75rem; border: 1px solid #cbd5e1;" />
+      </section>
+
+      <button type="submit" class="primary-btn" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+        🚀 Structure Report & Find Nearby Help
+      </button>
+
+      <div id="loading" style="display:none; text-align: center; font-weight: 700; color: var(--primary-emerald); margin-top: 0.5rem;">
+        ⚡ Analyzing accident details via Eco-Intelligent Engine…
+      </div>
+    </form>
+  </main>
+
+  <footer class="eco-footer">
+    RoadSafe AI • Eco-Intelligent Traffic Accident Lifeline • Hackathon Submission
+  </footer>
+
+  <script src="js/report.js"></script>
+  <script>
+    function fillPreset(type) {
+      const desc = document.getElementById('description');
+      const loc = document.getElementById('manualLocation');
+      const count = document.getElementById('injuredCount');
+      const injuries = document.getElementById('injuryDetails');
+      const vehicles = document.getElementById('vehicles');
+
+      if (type === 'highway') {
+        desc.value = 'Severe collision between sedan and SUV near Outer Ring Road flyover. One vehicle overturned, heavy traffic blockage.';
+        loc.value = 'Outer Ring Road Flyover, Junction 4';
+        count.value = '2';
+        injuries.value = 'Driver conscious with lacerations, passenger complaining of severe shoulder pain.';
+        vehicles.value = 'Honda City (Sedan) and Hyundai Creta (SUV)';
+      } else if (type === 'bike') {
+        desc.value = 'Motorcycle skidded on wet curve and struck road divider. Rider thrown from bike.';
+        loc.value = 'MG Road near Metro Station Exit 2';
+        count.value = '1';
+        injuries.value = 'Deep bleeding on right arm and leg abrasion, conscious.';
+        vehicles.value = 'Yamaha R15 Motorcycle';
+      } else if (type === 'pedestrian') {
+        desc.value = 'Pedestrian struck while using crosswalk by turning auto rickshaw.';
+        loc.value = '100ft Road Crosswalk, Indiranagar';
+        count.value = '1';
+        injuries.value = 'Head contusion, unable to walk, emergency assistance needed.';
+        vehicles.value = 'Bajaj Auto Rickshaw';
+      }
+    }
+  </script>
+</body>
+</html>
