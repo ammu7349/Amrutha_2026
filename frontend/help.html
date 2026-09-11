@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoadSafe AI – Nearby Emergency Help</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Brand Header -->
+  <header class="brand-header">
+    <div class="brand-wrapper">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">🌱</span>
+        <div>
+          <div class="brand-title">RoadSafe AI</div>
+          <div class="brand-tagline">Eco-Intelligent Emergency Intake & Live Dispatch</div>
+        </div>
+      </a>
+      <div class="eco-badge-header">
+        🌿 <span>Zero-Carbon Local AI • No API Key Required</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html">🚨 Report Accident</a>
+    <a href="help.html" class="active">🏥 Nearby Help</a>
+    <a href="alert.html">📢 Emergency Alert</a>
+    <a href="track.html">🚑 Track Response</a>
+  </nav>
+
+  <main class="container">
+    <h1>🏥 Nearby Emergency & Trauma Care</h1>
+    <p class="page-subtitle">Automatic geolocation radius search identifies the closest certified medical trauma centers with low-carbon green routes.</p>
+
+    <div class="eco-banner">
+      🌱 <strong>Eco-Corridor Routing:</strong> Emergency services mapped with shortest high-flow paths to minimize dispatch time and fuel consumption.
+    </div>
+
+    <!-- Live Map -->
+    <div id="map"></div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+      <h2>Discovered Facilities Within 5 km</h2>
+      <a href="alert.html" class="primary-btn">Review Emergency Alert →</a>
+    </div>
+
+    <ul class="hospital-list" id="hospitalList">
+      <!-- Dynamically filled by help.js with real or fallback medical facilities -->
+    </ul>
+  </main>
+
+  <footer class="eco-footer">
+    RoadSafe AI • Eco-Intelligent Traffic Accident Lifeline • Hackathon Submission
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/help.js"></script>
+</body>
+</html>
