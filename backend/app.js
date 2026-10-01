@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // In-memory store for incidents (demo only)
 const incidents = {};
@@ -62,11 +64,11 @@ function analyzeReportOffline(body) {
 async function callGemini(payload) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
-  const response = await fetch('https://generativeai.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent', {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify(payload),
   });
@@ -117,9 +119,11 @@ app.post('/api/report', upload.single('photo'), async (req, res) => {
       structured = analyzeReportOffline(req.body);
     }
 
+    const parsedLat = parseFloat(latitude);
+    const parsedLng = parseFloat(longitude);
     structured.location_coordinates = {
-      latitude: parseFloat(latitude) || 12.9716,
-      longitude: parseFloat(longitude) || 77.5946
+      latitude: (!isNaN(parsedLat) && parsedLat !== null) ? parsedLat : 12.9716,
+      longitude: (!isNaN(parsedLng) && parsedLng !== null) ? parsedLng : 77.5946
     };
 
     const incidentId = uuidv4();
